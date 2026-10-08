@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web-app:
+    build: ./app
+    container_name: admin_feedback_app
+    ports:
+      - "3075:3075"
+    volumes:
+      - ./logs:/opt/admin/logs
+    environment:
+      - NODE_ENV=production
+    restart: always
+
+  # Simulated host configuration (e.g., handles logging/mock injection on the VM level)
+  # In actual deployment, logs will reside at /opt/admin/logs on the VM host.
